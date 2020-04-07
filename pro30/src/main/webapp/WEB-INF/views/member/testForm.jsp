@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/member/test.do">
+<form action="test.do">
 <input type="text">
 <input type="submit">
 </form>

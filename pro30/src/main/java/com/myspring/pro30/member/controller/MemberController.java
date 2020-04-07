@@ -24,6 +24,8 @@ public interface MemberController {
 	
 	
 	public ResponseEntity   overlapped(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception;
-
+	public ResponseEntity modifyMember(@RequestParam("attribute")  String attribute,
+            @RequestParam("value")  String value,
+            HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	
 }

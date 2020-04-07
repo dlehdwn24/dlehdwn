@@ -21,6 +21,24 @@
 </style>
 
 <script>
+function modd(a){
+	var value;
+	alert(id);
+	if(a=='pwd'){
+		value=modform.pwd.value;
+		alert("pwd:"+value);
+}else if(a=='gender'){
+	var gender=modform.gender;
+	for(var i=0; gender.length;i++){
+	 	if(gender[i].checked){
+			value=gender[i].value;
+			break;
+		} 
+	}
+	
+}
+	
+}
 function mod(attribute){
 	var value;
 	alert(id);
@@ -28,7 +46,7 @@ function mod(attribute){
 		var modform=document.modform;
 		if(attribute=='pwd'){
 			value=modform.pwd.value;
-			alert("member_pw:"+value);
+			alert("pwd:"+value);
 		}
 	
 		/* else if(attribute=='gender'){
@@ -42,12 +60,12 @@ function mod(attribute){
 			}
 		
 		} */
-	
+
 		console.log(attribute);
 $.ajax({
 	type : "post",
 	async : false, //false인 경우 동기식으로 처리한다.
-	url : "${contextPath}/member/modifyMyInfo.do",
+	url : "${contextPath}/member/modifyMember.do",
 	data : {
 		attribute:attribute,
 		value:value,
@@ -79,7 +97,7 @@ $.ajax({
 
 		<tr>
 	      <td width="200"><p align="right">아이디</td>
-	      <td width="400"><input type="text" name="id" value="${member.id}" disabled></td>
+	      <td width="400"><input type="text" name="id" value="${member.id}" readonly></td>
 	    </tr>
 	   <tr>
 	      <td width="200"><p align="right">비밀번호</td>
@@ -94,7 +112,6 @@ $.ajax({
 	    <tr>
 	       <td width="200"><p align="right">이메일</td>
 	       <td width="400"><p><input type="text" name="email" value="${member.email}"></td>
-	       <td><input type="button" value="수정하기" onclick="mod(email)"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">전화번호</td>
@@ -110,13 +127,11 @@ $.ajax({
 	       
 	       <c:choose >
 					    <c:when test="${member.gender =='man' }">
-					      <input type="radio" name="gender" value="man" checked/>
-						  남성 <span style="padding-left:30px"></span>
+					      <input type="radio" name="gender" value="man" checked/>남성 
 					   <input type="radio" name="gender" value="girl" />여성
 					    </c:when>
 					    <c:otherwise>
 					      <input type="radio" name="gender" value="man"   /> 남성 
-						  <span style="padding-left:30px"></span>
 					      <input type="radio" name="gender" value="girl" checked />여성
 				</c:otherwise>
 			</c:choose>
@@ -125,7 +140,7 @@ $.ajax({
 
 		</tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="submit" value="수정하기"><input type="reset" value="다시입력"></td>
+	       <td width="400"><input type="submit" value="수정하기" ><input type="reset" value="다시입력"></td>
 	    </tr>
 	</table>
 	</form>

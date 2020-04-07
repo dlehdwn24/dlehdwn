@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int modMember(MemberVO member) throws DataAccessException {
-		return memberDAO.updateMember(member);
+		return memberDAO.modMember(member);
 	}
 
 	@Override
@@ -52,5 +52,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectOverlappedID(id);
 	}
 	
+	public MemberVO  modifyMember(Map memberMap) throws Exception{
+		 String id=(String)memberMap.get("member_id");
+		 memberDAO.modifyMember(memberMap);
+		 return memberDAO.selectMyDetailInfo(id);
+	}
 
 }

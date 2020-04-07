@@ -17,6 +17,7 @@ public interface MemberDAO {
 	 
 	 public String selectOverlappedID(String id) throws DataAccessException;
 	public MemberVO selectMyDetailInfo(String member_id) throws DataAccessException;
-
+	int modMember(MemberVO memberVO) throws DataAccessException;
+	public void modifyMember(Map memberMap) throws DataAccessException;
 
 }

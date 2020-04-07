@@ -1,6 +1,7 @@
 package com.myspring.pro30.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,12 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
+	public int modMember(MemberVO memberVO) throws DataAccessException {
+		int result = sqlSession.update("mapper.member.modMember");
+		return result;
+	}
+	
+	@Override
 	public MemberVO loginById(MemberVO memberVO) throws DataAccessException{
 		  MemberVO vo = sqlSession.selectOne("mapper.member.loginById",memberVO);
 		return vo;
@@ -52,10 +59,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
-	public MemberVO selectMyDetailInfo(String member_id) throws DataAccessException{
-		MemberVO memberVO=(MemberVO)sqlSession.selectOne("mapper.mypage.selectMyDetailInfo",member_id);
+	public MemberVO selectMyDetailInfo(String id) throws DataAccessException{
+		MemberVO memberVO=(MemberVO)sqlSession.selectOne("mapper.member.selectMyDetailInfo", id);
 		return memberVO;
 		
 	}
 	
+	public void modifyMember(Map memberMap) throws DataAccessException{
+		sqlSession.update("mapper.member.updateMember",memberMap);
+	}
 }

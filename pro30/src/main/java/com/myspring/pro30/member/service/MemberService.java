@@ -15,5 +15,5 @@ public interface MemberService {
 	 public int modMember(MemberVO memberVO) throws DataAccessException;
 
 	 public String overlapped(String id) throws Exception;
-	
+	 public MemberVO  modifyMember(Map memberMap) throws Exception;
 }

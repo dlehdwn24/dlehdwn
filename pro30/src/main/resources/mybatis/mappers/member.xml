@@ -26,7 +26,7 @@
 
 	<select id="selectAllMemberList" resultMap="memResult">
       <![CDATA[
-         select * from y_member	order by joinDate desc	 	
+         select * from y_member	order by id asc	 	
       ]]>
 	</select>
     
@@ -37,15 +37,31 @@
 		]]>      
 	</insert>
 	
-   
-   <update id="updateMember"  parameterType="memberVO">
+   <update id="modMember"  parameterType="memberVO">
      <![CDATA[
 	     update y_member
-	     set pwd=#{pwd}, name=#{name}, email=#{email}, tel=#{tel}, age=#{age}, gender=#{gender}
+	     
+	     
+	     set id=#{member.id}, pwd=#{pwd}, name=#{name}, email=#{email}, tel=#{tel}, age=#{age}, gender=#{gender}, joinDate=#{member.joinDate}
 	     where
 	     id=#{id}
       ]]>      
-   </update> 
+   </update>  
+   
+   
+   <update id="updateMember" parameterType="java.util.HashMap">
+	   update y_member
+			   <set>
+			      <if test=" pwd!='' and pwd!=null">
+			        pwd=#{pwd},
+			      </if>
+			    
+			       
+			   </set>
+		where 
+		id=#{member.id}
+	</update>
+   
      
    <delete id="deleteMember"  parameterType="String">
 	<![CDATA[

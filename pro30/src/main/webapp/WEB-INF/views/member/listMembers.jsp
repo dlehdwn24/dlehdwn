@@ -23,7 +23,7 @@ function alert() {
 </head>
 <body>
 
-<table border="1"  align="center"  width="80%">
+<table border="1"  align="center"  width="100%">
     <tr align="center"   bgcolor="">
       <td ><b>아이디</b></td>
       <td><b>비밀번호</b></td>
@@ -47,7 +47,6 @@ function alert() {
       <td>${member.gender}</td>
       <td>${member.joinDate}</td>
       <td><a href="${contextPath}/member/removeMember.do?id=${member.id}" onclick="return alert()">삭제하기</a></td>
-      
     </tr>
   </c:forEach>   
 </table>
