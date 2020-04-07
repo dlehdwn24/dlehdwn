@@ -49,7 +49,7 @@
    </update>  
    
    
-   <update id="updateMember" parameterType="java.util.HashMap">
+   <update id="selec" parameterType="java.util.HashMap">
 	   update y_member
 			   <set>
 			      <if test=" pwd!='' and pwd!=null">
